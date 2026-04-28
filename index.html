@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Frameworks</title>
+  <style>
+    body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; }
+    h1 { color: #ff0000; }
+    h2 { color: #333333; }
+    #list { display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap: 20px;}
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin: 12px 0; overflow: hidden; }
+    .card img { width: 48px; height: 48px; object-fit: contain; float: right; }
+    .card h2 { margin: 0 0 6px 0; }
+    .card p { margin: 0 0 10px 0; color: #555; font-size: 14px; }
+    .badge { display: inline-block; background: #eee; border-radius: 4px; padding: 2px 8px; font-size: 12px; margin-right: 4px; }
+  </style>
+</head>
+<body>
+  <h1>JS Frameworks</h1>
+  <h2>Kennneth Kleven Kurniawan</h2>
+ <h2>Muhammad Rafi Atha</h2>
+  <h2>A Summary Of What We Learn In This Coding Session</h2>
+  <h3>Programs and Computers</h3>
+  <h4>Essentially we learned how the basics of computers are like for example theres a bunch of operating systems such as mac,windows,android and others that are more niche like ubuntu for example</h4>
+ <h3>Debugging</h3>
+ <h4>For debugging we learned how to debug to solve the errors of a code simulation for a website and we learned how to observe and train our instinct regarding whats inside of a code for example HTML, API, JSON, JS and overall the flow of the code</h4>
+ 
+  <div id="list">Loading...</div>
+
+  <script>
+    fetch("https://pb-irc.artesparadox.net/api/collections/js_framework/records")
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        var list = document.getElementById("list");
+        list.innerHTML = "";
+        data.items.forEach(function(fw) {
+          list.innerHTML += "<div class='card'>" +
+            "<img src='" + fw.logo + "' alt='" + fw.name + "'>" +
+            "<h2>" + fw.name + "</h2>" +
+            "<p>" + fw.description + "</p>" +
+            "<span class='badge'>Age: " + fw.age + "</span>" +
+            "<span class='badge'>Complexity: " + fw.complexity + "</span>" +
+            "</div>";
+        });
+      });
+  </script>
+</body>
+</html>
